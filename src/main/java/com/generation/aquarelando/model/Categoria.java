@@ -28,7 +28,7 @@ public class Categoria {
 	private String descricao;
 	
 	@Column(columnDefinition="tinyint(1) default 1")
-	private boolean disponivel;
+	private boolean disponivel = true;
 
 	public long getId() {
 		return id;
