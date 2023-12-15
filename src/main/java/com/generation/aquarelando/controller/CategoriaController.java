@@ -34,10 +34,11 @@ public class CategoriaController {
 		.map (resposta -> ResponseEntity.ok(resposta))
 		.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 		
-		
-		
+	}
 				
-				
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Categoria>> getByNome(@PathVariable String nome){
+		return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
 
