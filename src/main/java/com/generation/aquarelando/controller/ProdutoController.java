@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.aquarelando.model.Produto;
+import com.generation.aquarelando.repository.CategoriaRepository;
 import com.generation.aquarelando.repository.ProdutoRepository;
 
 import jakarta.validation.Valid;
@@ -27,6 +28,9 @@ import jakarta.validation.Valid;
 @RequestMapping("/produtos")
 @CrossOrigin(origins = "*",allowedHeaders = "*")
 public class ProdutoController {
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
@@ -50,14 +54,14 @@ public class ProdutoController {
 		
 	}
 	
-	@GetMapping("selo/{selo}")
+	@GetMapping("selo/{seloInmetro}")
 	public ResponseEntity<List<Produto>>getByselo_inmetro(@PathVariable boolean seloInmetro){
 		return ResponseEntity.ok(produtoRepository.findAllBySeloInmetro(seloInmetro));
 	}
 	
 	@PostMapping
     public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto) {
-        if(produtoRepository.existsById(produto.getCategoria().getId()))
+        if(categoriaRepository.existsById(produto.getCategoria().getId()))
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(produtoRepository.save(produto));
 
@@ -69,7 +73,7 @@ public class ProdutoController {
     public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
         if(produtoRepository.existsById(produto.getId())) {
 
-            if(produtoRepository.existsById(produto.getCategoria().getId()))
+            if(categoriaRepository.existsById(produto.getCategoria().getId()))
                 return ResponseEntity.status(HttpStatus.OK)
                         .body(produtoRepository.save(produto));
 
