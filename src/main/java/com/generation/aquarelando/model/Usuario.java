@@ -1,10 +1,23 @@
 package com.generation.aquarelando.model;
 
-import jakarta.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
-import java.util.Date;
 
 @Entity
 @Table(name="tb_usuario")
@@ -37,6 +50,10 @@ public class Usuario {
     @NotBlank(message = "Obrigatorio senha, precisa ter caracteres especiais e pelo menos uma letra maiuscula")
     @Size(min = 11,max = 11)
     private String senha;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Produto> produto;
 
 	public Long getId() {
 		return id;
@@ -93,6 +110,16 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
+	
+	
 
     
 }
