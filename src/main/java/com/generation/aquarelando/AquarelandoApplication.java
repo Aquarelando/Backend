@@ -9,5 +9,4 @@ public class AquarelandoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AquarelandoApplication.class, args);
 	}
-
 }

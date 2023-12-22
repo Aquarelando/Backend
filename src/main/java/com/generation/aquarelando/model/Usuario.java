@@ -1,8 +1,10 @@
 package com.generation.aquarelando.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -17,6 +19,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -32,9 +35,9 @@ public class Usuario {
     @Size(min = 5,max = 50, message = "Min:5 e Max: 50")
     @Column(length = 50)
     private String nome;
-    
-    @NotBlank(message = "Não pode ter espaços vazios")
-    @Temporal(TemporalType.DATE)
+
+	@NotNull(message = "data não pode ser nula")
+	@JsonFormat(pattern = "yyyy-MM-dd")
     private Date data_nascimento;
     
     @NotBlank(message = "Obrigatorio CPF, Não pode ter espaços em brancos, nem pontuações ou traços.")
@@ -44,11 +47,11 @@ public class Usuario {
     private String foto;
     
     @NotBlank(message = "Obrigatorio Email, Não pode ter somentes espaços em brancos.")
-    @Size(min = 11,max = 11)
+    @Size(min = 5,max = 50)
     private String email;
 
     @NotBlank(message = "Obrigatorio senha, precisa ter caracteres especiais e pelo menos uma letra maiuscula")
-    @Size(min = 11,max = 11)
+    @Size(min = 8)
     private String senha;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
