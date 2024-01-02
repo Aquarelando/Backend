@@ -77,7 +77,7 @@ public class ProdutoController {
                 return ResponseEntity.status(HttpStatus.OK)
                         .body(produtoRepository.save(produto));
 
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tema não existe!", null);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria não existe!", null);
 
         }
 

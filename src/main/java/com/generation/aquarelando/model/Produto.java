@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -44,15 +45,18 @@ public class Produto {
 	@Column(columnDefinition = "tinyint(1) default 0")
 	private boolean seloInmetro = false;
 
+	@NotNull(message = "Informe o Preço do Produto!")
+	@Positive(message = "O preço do Produto deve ser maior que zero!")
+	private float preco;
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -109,6 +113,14 @@ public class Produto {
 		this.seloInmetro = seloInmetro;
 	}
 
+	public float getPreco() {
+		return preco;
+	}
+
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -124,9 +136,4 @@ public class Produto {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
-	
-	
-	
 }
