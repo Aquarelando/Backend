@@ -35,7 +35,7 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	
-	@GetMapping ("/all")
+	@GetMapping ("/todos")
 	public ResponseEntity<List<Produto>>getAll(){
 		return ResponseEntity.ok(produtoRepository.findAll());		
 	}
@@ -59,7 +59,7 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findAllBySeloInmetro(seloInmetro));
 	}
 	
-	@PostMapping
+	@PostMapping("/novo")
     public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto) {
         if(categoriaRepository.existsById(produto.getCategoria().getId()))
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -69,7 +69,7 @@ public class ProdutoController {
     }
 	
 	
-	@PutMapping
+	@PutMapping("/editar")
     public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
         if(produtoRepository.existsById(produto.getId())) {
 
@@ -86,7 +86,7 @@ public class ProdutoController {
     }
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deletar/{id}")
 	public void delete(@PathVariable Long id) {
 		Optional<Produto> produto =produtoRepository.findById(id);
 		

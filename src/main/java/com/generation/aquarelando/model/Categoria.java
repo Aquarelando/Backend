@@ -25,7 +25,7 @@ public class Categoria {
 	private long id;
 	
 	@NotBlank(message = "Por favor, informe o nome da Categoria!")
-	@Size(min = 5, max = 20, message = "O nome da categoris deve ter no minimo 5  e no maximo 20 caracteres.")
+	@Size(min = 5, max = 20, message = "O nome da categoria deve ter no minimo 5  e no maximo 20 caracteres.")
 	@Column(length = 20)
 	private String nome;
 	

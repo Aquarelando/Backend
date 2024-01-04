@@ -1,6 +1,5 @@
 package com.generation.aquarelando.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +15,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

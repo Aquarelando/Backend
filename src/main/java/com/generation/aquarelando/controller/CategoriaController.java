@@ -54,14 +54,14 @@ public class CategoriaController {
 	}
 	
 	// Criando categoria
-	@PostMapping("/new")//localhost:8080/categoria/new
+	@PostMapping("/novo")//localhost:8080/categoria/new
 	public ResponseEntity<Categoria> post (@Valid @RequestBody Categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(categoriaRepository.save(categoria));
 	}
 	
 	//Atualizando categoria
-	@PutMapping("/edit")//localhost:8080/categoria/edit
+	@PutMapping("/editar")//localhost:8080/categoria/edit
 	public ResponseEntity<Categoria> put (@Valid @RequestBody Categoria categoria) {
 		return categoriaRepository.findById(categoria.getId())
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED)
@@ -71,7 +71,7 @@ public class CategoriaController {
 	
 	//Deletando categoria
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("/delete/{id}")//localhost:8080/categoria/delete
+	@DeleteMapping("/deletar/{id}")//localhost:8080/categoria/delete
 	public void delete(@PathVariable Long id) {
 		Optional<Categoria> categoria =categoriaRepository.findById(id);
 		
