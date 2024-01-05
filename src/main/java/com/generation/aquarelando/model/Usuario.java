@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,6 +44,7 @@ public class Usuario {
     
     private String foto;
     
+    @Schema(example = "email@email.com.br")
     @NotBlank(message = "Obrigatorio Email, Não pode ter somentes espaços em brancos.")
     @Size(min = 5,max = 50)
     private String email;
