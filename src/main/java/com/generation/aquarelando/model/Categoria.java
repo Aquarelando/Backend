@@ -34,7 +34,7 @@ public class Categoria {
 	@Column(length = 500)
 	private String descricao;
 	
-	@Column(columnDefinition="tinyint(1) default 1")
+	//@Column(columnDefinition="tinyint(1) default 1")
 	private boolean disponivel = true;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
