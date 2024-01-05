@@ -42,7 +42,7 @@ public class Produto {
 	@NotBlank(message = "Foto não pode estar em branco")
 	private String foto;
 
-	@Column(columnDefinition = "tinyint(1) default 0")
+	//@Column(columnDefinition = "tinyint(1) default 0")
 	private boolean seloInmetro = false;
 
 	@NotNull(message = "Informe o Preço do Produto!")
