@@ -33,6 +33,9 @@ public class Usuario {
     @Size(min = 5,max = 50, message = "Min:5 e Max: 50")
     @Column(length = 50)
     private String nome;
+    
+    @NotBlank(message = "Obrigatorio tipo Usuario, Não pode ter somentes espaços em brancos.")
+    private String tipo;
 
 	@NotNull(message = "data não pode ser nula")
 	@JsonFormat(pattern = "yyyy-MM-dd")
@@ -71,6 +74,14 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public Date getData_nascimento() {

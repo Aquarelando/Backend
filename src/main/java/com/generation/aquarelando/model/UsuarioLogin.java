@@ -8,6 +8,8 @@ public class UsuarioLogin {
 	
 	private String nome;
 	
+	private String tipo;
+	
 	private Date data_nascimento;
 	
 	private String cpf;
@@ -34,6 +36,14 @@ public class UsuarioLogin {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public Date getData_nascimento() {
