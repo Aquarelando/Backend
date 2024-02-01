@@ -34,7 +34,7 @@ public class Usuario {
     @Column(length = 50)
     private String nome;
     
-    @NotBlank(message = "Obrigatorio tipo Usuario, Não pode ter somentes espaços em brancos.")
+    @NotNull(message = "Obrigatorio tipo Usuario, Não pode ter somentes espaços em brancos.")
     private String tipo;
 
 	@NotNull(message = "data não pode ser nula")
