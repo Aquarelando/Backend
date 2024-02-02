@@ -35,7 +35,7 @@ public class Usuario {
     private String nome;
     
     @NotBlank(message = "Obrigatorio tipo Usuario, Não pode ter somentes espaços em brancos.")
-    private String tipo;
+    private String tipo = "user";
 
 	@NotNull(message = "data não pode ser nula")
 	@JsonFormat(pattern = "yyyy-MM-dd")
