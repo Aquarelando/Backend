@@ -1,6 +1,6 @@
 package com.generation.aquarelando.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -34,7 +34,7 @@ public class Produto {
 	@Column(length = 100)
 	private String descricao;
 
-	private LocalDateTime dataValidade;
+	private LocalDate dataValidade;
 
 	@NotNull(message = "Quantidade não pode estar em branco")
 	private int quantidade;
@@ -81,11 +81,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public LocalDateTime getDataValidade() {
+	public LocalDate getDataValidade() {
 		return dataValidade;
 	}
 
-	public void setDataValidade(LocalDateTime dataValidade) {
+	public void setDataValidade(LocalDate dataValidade) {
 		this.dataValidade = dataValidade;
 	}
 
